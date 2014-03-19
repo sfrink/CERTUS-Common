@@ -1,7 +1,6 @@
 package dto;
 
 import java.io.Serializable;
-
 import enumeration.CandidateStatus;
 
 
