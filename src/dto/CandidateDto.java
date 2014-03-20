@@ -1,7 +1,7 @@
 package dto;
 
 import java.io.Serializable;
-import enumeration.CandidateStatus;
+import enumeration.Status;
 
 
 /**
@@ -44,11 +44,11 @@ public class CandidateDto implements Serializable{
 	}
 	public String getStatusLabel()
 	{
-		return CandidateStatus.getStatus(this.status).getLabel();
+		return Status.getStatus(this.status).getLabel();
 	}
 	public String getStatusDesc()
 	{
-		return CandidateStatus.getStatus(this.status).getDescription();
+		return Status.getStatus(this.status).getDescription();
 	}
 	public void setStatus(int status) {
 		this.status = status;

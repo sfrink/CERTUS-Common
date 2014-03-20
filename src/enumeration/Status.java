@@ -8,11 +8,11 @@ import java.util.Map;
  * @author : Hirosh Wickramasuriya
  */
 
-public enum CandidateStatus {
+public enum Status {
 	
 	
-	DISABLED (0, "Disabled", "In active candidate."), 
-	ENABLED (1, "Enabled", "Active candidate.");
+	DISABLED (0, "Disabled", "In active record."), 
+	ENABLED (1, "Enabled", "Active record.");
 
  
     private int code;
@@ -22,15 +22,15 @@ public enum CandidateStatus {
     /**
      * A mapping between the integer code and its corresponding Status to facilitate lookup by code.
      */
-    private static Map<Integer, CandidateStatus> codeToStatusMapping;
+    private static Map<Integer, Status> codeToStatusMapping;
  
-    private CandidateStatus(int code, String label, String description) {
+    private Status(int code, String label, String description) {
         this.code = code;
         this.label = label;
         this.description = description;
     }
     
-    public static CandidateStatus getStatus(int i) {
+    public static Status getStatus(int i) {
         if (codeToStatusMapping == null) {
             initMapping();
         }
@@ -38,8 +38,8 @@ public enum CandidateStatus {
     }
  
     private static void initMapping() {
-        codeToStatusMapping = new HashMap<Integer, CandidateStatus>();
-        for (CandidateStatus s : values()) {
+        codeToStatusMapping = new HashMap<Integer, Status>();
+        for (Status s : values()) {
             codeToStatusMapping.put(s.code, s);
         }
     }
