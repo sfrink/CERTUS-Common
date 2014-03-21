@@ -6,10 +6,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputValidation {
-
+	String delimiter = "\n";
+	
 	public Validator validateString(String str, String label) {
 		int stdStrLen = 1024;
-		String delimiter = "\n";
+		
 
 		Validator v = new Validator();
 		v.setVerified(true);
@@ -30,7 +31,7 @@ public class InputValidation {
 	public Validator validateStatusInt(int input, String label) {
 		int statusActive = 1;
 		int statusInactive = 0;
-		String delimiter = "\n";
+		
 
 		Validator v = new Validator();
 		v.setVerified(true);
@@ -47,7 +48,7 @@ public class InputValidation {
 	}
 
 	public Validator validateInt(int input, String label) {
-		String delimiter = "\n";
+		
 		Validator v = new Validator();
 
 		v.setVerified(true);
@@ -63,7 +64,7 @@ public class InputValidation {
 	}
 
 	public Validator validateDoubleGeneralWithNull(double input, String label) {
-		String delimiter = "\n";
+		
 		Validator v = new Validator();
 
 		v.setVerified(true);
@@ -79,7 +80,7 @@ public class InputValidation {
 	}
 	
        public Validator validateIntDefault(int input, int defaultValue , String label) {
-		String delimiter = "\n";
+		
 		Validator v = new Validator();
 
 		v.setVerified(true);
@@ -95,7 +96,7 @@ public class InputValidation {
 	}
                 
 	public Validator validateDoubleGeneral(double input, String label) {
-		String delimiter = "\n";
+		
 		Validator v = new Validator();
 
 		v.setVerified(true);
@@ -111,7 +112,7 @@ public class InputValidation {
 	}
 
 	public Validator validateTimestampGeneral(Timestamp input, String label) {
-		String delimiter = "\n";
+		
 		Validator v = new Validator();
 
 		v.setVerified(true);
@@ -126,7 +127,7 @@ public class InputValidation {
 	}
 
 	public Validator validateEmail(String str, String label) {
-		String delimiter = "\n";
+		
 		Validator v = new Validator();
 
 		Pattern pattern = Pattern
