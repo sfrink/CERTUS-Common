@@ -21,18 +21,18 @@ public interface ServerInterface extends Remote {
     public ElectionDto getElection(int id) throws RemoteException;
     public ArrayList<ElectionDto> getElections(ElectionStatus electionStatus) throws RemoteException;
     public ArrayList<ElectionDto> getElections() throws RemoteException;
-    public void addElection(String name, int owner_id) throws RemoteException;
-    public void editElection(ElectionDto election) throws RemoteException;
+    public Validator addElection(String name, int owner_id) throws RemoteException;
+    public Validator editElection(ElectionDto election) throws RemoteException;
     
     // Candidate
     public CandidateDto getCandidate(int id) throws RemoteException;
     public ArrayList<CandidateDto> getCandidatesOfElection(int election_id) throws RemoteException;
     public ArrayList<CandidateDto> getCandidatesOfElection(int election_id, Status candidateStatus) throws RemoteException;
-    public void addCandidates(ArrayList<String> names, int election_id) throws RemoteException;
-    public void editCandidate(CandidateDto candidate) throws RemoteException;
+    public Validator addCandidates(ArrayList<String> names, int election_id) throws RemoteException;
+    public Validator editCandidate(CandidateDto candidate) throws RemoteException;
     
     //Vote
-    public void vote(VoteDto v) throws RemoteException;
+    public Validator vote(VoteDto v) throws RemoteException;
 
 
 
