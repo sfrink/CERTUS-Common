@@ -15,12 +15,19 @@ public class VoteDto implements Serializable{
 	 */
 	private static final long serialVersionUID = 6647026320380230760L;
 
+	private int user_id;		// required to get the corresponding  public key of the user
 	private int election_id;
 	private String vote_encrypted;
 	private String vote_signature;
 	private Timestamp timestamp;
 	
 	
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 	public int getElection_id() {
 		return election_id;
 	}
