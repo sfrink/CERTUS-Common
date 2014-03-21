@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import dto.CandidateDto;
 import dto.ElectionDto;
 import dto.Validator;
+import dto.VoteDto;
 import enumeration.Status;
 import enumeration.ElectionStatus;
 
@@ -20,9 +21,19 @@ public interface ServerInterface extends Remote {
     public ElectionDto getElection(int id) throws RemoteException;
     public ArrayList<ElectionDto> getElections(ElectionStatus electionStatus) throws RemoteException;
     public ArrayList<ElectionDto> getElections() throws RemoteException;
+    public void addElection(String name, int owner_id) throws RemoteException;
+    public void editElection(ElectionDto election) throws RemoteException;
     
     // Candidate
     public CandidateDto getCandidate(int id) throws RemoteException;
     public ArrayList<CandidateDto> getCandidatesOfElection(int election_id) throws RemoteException;
     public ArrayList<CandidateDto> getCandidatesOfElection(int election_id, Status candidateStatus) throws RemoteException;
+    public void addCandidates(ArrayList<String> names, int election_id) throws RemoteException;
+    public void editCandidate(CandidateDto candidate) throws RemoteException;
+    
+    //Vote
+    public void vote(VoteDto v) throws RemoteException;
+
+
+
 }
