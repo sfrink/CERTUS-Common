@@ -18,18 +18,23 @@ public interface ServerInterface extends Remote {
     		throws RemoteException;
     
     // Election
-    public ElectionDto getElection(int id) throws RemoteException;
-    public ArrayList<ElectionDto> getElections(ElectionStatus electionStatus) throws RemoteException;
-    public ArrayList<ElectionDto> getElections() throws RemoteException;
+    public ElectionDto selectElection(int id) throws RemoteException;
+    public ArrayList<ElectionDto> selectElections(ElectionStatus electionStatus) throws RemoteException;
+    public ArrayList<ElectionDto> selectElections() throws RemoteException;
     public Validator addElection(String name, int owner_id) throws RemoteException;
     public Validator editElection(ElectionDto election) throws RemoteException;
+    public Validator selectElectionsOwnedByUser(int election_owner_id, ElectionStatus electionStatus) throws RemoteException;
+    public Validator selectElectionsOwnedByUser(int election_owner_id) throws RemoteException;
+    
+
     
     // Candidate
-    public CandidateDto getCandidate(int id) throws RemoteException;
-    public ArrayList<CandidateDto> getCandidatesOfElection(int election_id) throws RemoteException;
-    public ArrayList<CandidateDto> getCandidatesOfElection(int election_id, Status candidateStatus) throws RemoteException;
+    public CandidateDto selectCandidate(int id) throws RemoteException;
+    public ArrayList<CandidateDto> selectCandidatesOfElection(int election_id) throws RemoteException;
+    public ArrayList<CandidateDto> selectCandidatesOfElection(int election_id, Status candidateStatus) throws RemoteException;
     public Validator addCandidates(ArrayList<String> names, int election_id) throws RemoteException;
     public Validator editCandidate(CandidateDto candidate) throws RemoteException;
+    
     
     //Vote
     public Validator vote(VoteDto v) throws RemoteException;
