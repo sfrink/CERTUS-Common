@@ -25,9 +25,8 @@ public interface ServerInterface extends Remote {
     public Validator selectElectionsOwnedByUser(int electionOwnerId) throws RemoteException;
     public Validator addElection(String name, int ownerId) throws RemoteException;
     public Validator editElection(ElectionDto election) throws RemoteException;
-    public Validator startElection(int electionId) throws RemoteException;
-    public Validator closeElection(int electionId) throws RemoteException;
-    public Validator deleteElection(int electionId) throws RemoteException;
+    public Validator editElectionStatus(int electionId, ElectionStatus electionStatus) throws RemoteException;
+   
     
     // Candidate
     public Validator selectCandidate(int id) throws RemoteException;
@@ -36,7 +35,8 @@ public interface ServerInterface extends Remote {
     public Validator addCandidatesNamesToElection(ArrayList<String> names, int electionId) throws RemoteException;
     public Validator addCandidatesToElection(ArrayList<CandidateDto> candidateList, int electionId) throws RemoteException;
     public Validator editCandidate(CandidateDto candidate) throws RemoteException;
-    
+    public Validator editCandidateStatus(int candidateId, Status status) throws RemoteException;
+
     //Vote
     public Validator vote(VoteDto v) throws RemoteException;
 
