@@ -2,6 +2,7 @@ package dto;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import enumeration.ElectionStatus;
 
@@ -24,6 +25,7 @@ public class ElectionDto implements Serializable{
 	private String statusDescription;
 	private Timestamp startDatetime;
 	private Timestamp closeDatetime;
+	private ArrayList<CandidateDto> candidateList;
 	
 	
 	public int getElectionId() {
@@ -76,6 +78,37 @@ public class ElectionDto implements Serializable{
 		this.closeDatetime = closeDatetime;
 	}
 
+	public ArrayList<CandidateDto> getCandidateList() {
+		return candidateList;
+	}
+	public void setCandidateList(ArrayList<CandidateDto> candidateList) {
+		this.candidateList = candidateList;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	public Validator Validate()
+	{
+		boolean valid = false;
+		String status = "";
+		Validator v = new Validator();
+
+		InputValidation iv=new InputValidation();
+		
+		v = iv.validateString(this.getElectionName(), "Election Name");
+	    
+		for (CandidateDto candidate : this.getCandidateList())
+		{
+			Validator vCandidate = candidate.Validate();
+			valid &= vCandidate.isVerified();
+			status += "\n" + vCandidate.getStatus();
+		}
+		v.setVerified(v.isVerified() && valid);
+		v.setStatus(v.getStatus() + status);
+		return v;
+	}
+	
 	public String toString() {
 		String out = "";
 		String delimiter = "\n";
@@ -90,6 +123,7 @@ public class ElectionDto implements Serializable{
 		out += "statusDesc\t: " + this.getStatusDescription() + delimiter;
 		out += "start date_time	: " + this.getStartDatetime() + delimiter;
 		out += "close date_time	: " + this.getCloseDatetime() + delimiter;
+		out += "Candidates\t:" + this.getCandidateList().toString();
 		
 		out += endOfString;
 

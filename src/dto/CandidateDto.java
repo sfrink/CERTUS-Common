@@ -1,6 +1,12 @@
 package dto;
 
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import enumeration.Status;
 
 
@@ -60,6 +66,16 @@ public class CandidateDto implements Serializable{
 		this.displayOrder = displayOrder;
 	}
 	
+	public Validator Validate()
+	{
+		Validator v = new Validator();
+
+		InputValidation iv=new InputValidation();
+		
+		v = iv.validateString(this.getCandidateName(), "Candidate Name");
+
+		return v;
+	}
 	@Override
     public String toString() {
 		String out = "";
