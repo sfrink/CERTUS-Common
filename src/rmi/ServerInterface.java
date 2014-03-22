@@ -23,7 +23,7 @@ public interface ServerInterface extends Remote {
     public Validator selectElections() throws RemoteException;
     public Validator selectElectionsOwnedByUser(int electionOwnerId, ElectionStatus electionStatus) throws RemoteException;
     public Validator selectElectionsOwnedByUser(int electionOwnerId) throws RemoteException;
-    public Validator addElection(String name, int ownerId) throws RemoteException;
+    public Validator addElectiodWithCandidates(ElectionDto electionDto)throws RemoteException;
     public Validator editElection(ElectionDto election) throws RemoteException;
     public Validator editElectionStatus(int electionId, ElectionStatus electionStatus) throws RemoteException;
    
