@@ -14,30 +14,30 @@ public class CandidateDto implements Serializable{
 	private static final long serialVersionUID = 8249581055443866282L;
 	
 	
-	private int candidate_id;
-	private String candidate_name;
-	private int election_id;
+	private int candidateId;
+	private String candidateName;
+	private int electionId;
 	private int status;
-	private int display_order;
+	private int displayOrder;
 	
 	
-	public int getCandidate_id() {
-		return candidate_id;
+	public int getCandidateId() {
+		return candidateId;
 	}
-	public void setCandidate_id(int candidate_id) {
-		this.candidate_id = candidate_id;
+	public void setCandidateId(int candidateId) {
+		this.candidateId = candidateId;
 	}
-	public String getCandidate_name() {
-		return candidate_name;
+	public String getCandidateName() {
+		return candidateName;
 	}
-	public void setCandidate_name(String candidate_name) {
-		this.candidate_name = candidate_name;
+	public void setCandidateName(String candidateName) {
+		this.candidateName = candidateName;
 	}
-	public int getElection_id() {
-		return election_id;
+	public int getElectionId() {
+		return electionId;
 	}
-	public void setElection_id(int election_id) {
-		this.election_id = election_id;
+	public void setElectionId(int electionId) {
+		this.electionId = electionId;
 	}
 	public int getStatus() {
 		return status;
@@ -53,11 +53,11 @@ public class CandidateDto implements Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public int getDisplay_order() {
-		return display_order;
+	public int getDisplayOrder() {
+		return displayOrder;
 	}
-	public void setDisplay_order(int display_order) {
-		this.display_order = display_order;
+	public void setDisplayOrder(int displayOrder) {
+		this.displayOrder = displayOrder;
 	}
 	
 	@Override
@@ -67,13 +67,13 @@ public class CandidateDto implements Serializable{
 		String endOfString = "<<< end >>> \n";
 
 		out += "Candidate " + delimiter;
-		out += "id\t\t: " + this.getCandidate_id() + delimiter;
-		out += "candidate name\t: " + this.getCandidate_name() + delimiter;
+		out += "id\t\t: " + this.getCandidateId() + delimiter;
+		out += "candidate name\t: " + this.getCandidateName() + delimiter;
 		out += "status\t\t: " + this.getStatus() + delimiter;
 		out += "statusText\t: " + this.getStatusLabel() + delimiter;
 		out += "statusDesc\t: " + this.getStatusDesc() + delimiter;
-		out += "election_id\t: " + this.getElection_id() + delimiter;
-		out += "display_order\t: " + this.getDisplay_order() + delimiter;
+		out += "election_id\t: " + this.getElectionId() + delimiter;
+		out += "display_order\t: " + this.getDisplayOrder() + delimiter;
 		
 		out += endOfString;
 
