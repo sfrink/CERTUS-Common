@@ -33,7 +33,8 @@ public interface ServerInterface extends Remote {
     public Validator selectCandidate(int id) throws RemoteException;
     public Validator selectCandidatesOfElection(int electionId) throws RemoteException;
     public Validator selectCandidatesOfElection(int electionId, Status candidateStatus) throws RemoteException;
-    public Validator addCandidates(ArrayList<String> names, int electionId) throws RemoteException;
+    public Validator addCandidatesNamesToElection(ArrayList<String> names, int electionId) throws RemoteException;
+    public Validator addCandidatesToElection(ArrayList<CandidateDto> candidateList, int electionId) throws RemoteException;
     public Validator editCandidate(CandidateDto candidate) throws RemoteException;
     
     //Vote
