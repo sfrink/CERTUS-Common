@@ -90,7 +90,7 @@ public class ElectionDto implements Serializable{
 	
 	public Validator Validate()
 	{
-		boolean valid = false;
+		boolean valid = true;
 		String status = "";
 		Validator v = new Validator();
 
