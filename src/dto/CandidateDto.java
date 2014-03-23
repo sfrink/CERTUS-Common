@@ -69,11 +69,27 @@ public class CandidateDto implements Serializable{
 	public Validator Validate()
 	{
 		Validator v = new Validator();
-
+		
+		boolean verified;
+		String status ;
+		String header = "Candidate Validation Status : \n";
+		
 		InputValidation iv=new InputValidation();
 		
 		v = iv.validateString(this.getCandidateName(), "Candidate Name");
-
+		verified = v.isVerified();
+		status = v.getStatus();
+		
+/*		v = iv.validateInt(this.getDisplayOrder(), "Display Order");
+		verified &= v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateInt(this.getElectionId(), "Election Id");
+		verified &= v.isVerified();
+		status += v.getStatus();*/
+		
+		v.setStatus(header + status);
+		v.setVerified(verified);
 		return v;
 	}
 	@Override
