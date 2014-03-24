@@ -43,6 +43,4 @@ public interface ServerInterface extends Remote {
     public Validator vote(VoteDto v) throws RemoteException;
     public Validator getTallierPublicKey() throws RemoteException;
 
-
-    public Validator byteArraytoHex(byte[] arr) throws RemoteException;
 }
