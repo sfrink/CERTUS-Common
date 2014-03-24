@@ -4,36 +4,37 @@ import java.io.Serializable;
 
 public class UserDto implements Serializable {
 	
-	private int user_id;
-	private String first_name;
-	private String last_name;
+	private int userId;
+	private String firstName;
+	private String lastName;
 	private String email;
 	private String password;
 	private String salt;
-	private String temp_password;
-	private String temp_salt;
-	private String activation_code;
-	private String public_key;
-	private int administrator_flag;
+	private String tempPassword;
+	private String tempSalt;
+	private String activationCode;
+	private String publicKey;
+	private byte[] publicKeyBytes;
+	private int administratorFlag;
 	private int status;
 	
 	public int getUserId() {
-		return user_id;
+		return userId;
 	}
-	public void setUserId(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	public String getFirstName() {
-		return first_name;
+		return firstName;
 	}
-	public void setFirstName(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return last_name;
+		return lastName;
 	}
-	public void setLastName(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getEmail() {
 		return email;
@@ -54,34 +55,40 @@ public class UserDto implements Serializable {
 		this.salt = salt;
 	}
 	public String getTempPassword() {
-		return temp_password;
+		return tempPassword;
 	}
-	public void setTempPassword(String temp_password) {
-		this.temp_password = temp_password;
+	public void setTempPassword(String tempPassword) {
+		this.tempPassword = tempPassword;
 	}
 	public String getTempSalt() {
-		return temp_salt;
+		return tempSalt;
 	}
-	public void setTempSalt(String temp_salt) {
-		this.temp_salt = temp_salt;
+	public void setTempSalt(String tempSalt) {
+		this.tempSalt = tempSalt;
 	}
 	public String getActivationCode() {
-		return activation_code;
+		return activationCode;
 	}
-	public void setActivationCode(String activation_code) {
-		this.activation_code = activation_code;
+	public void setActivationCode(String activationCode) {
+		this.activationCode = activationCode;
 	}
 	public String getPublicKey() {
-		return public_key;
+		return publicKey;
 	}
-	public void setPublicKey(String public_key) {
-		this.public_key = public_key;
+	public void setPublicKey(String publicKey) {
+		this.publicKey = publicKey;
+	}
+	public byte[] getPublicKeyBytes() {
+		return publicKeyBytes;
+	}
+	public void setPublicKeyBytes(byte[] publicKeyBytes) {
+		this.publicKeyBytes = publicKeyBytes;
 	}
 	public int getAdministratorFlag() {
-		return administrator_flag;
+		return administratorFlag;
 	}
-	public void setAdministratorFlag(int administrator_flag) {
-		this.administrator_flag = administrator_flag;
+	public void setAdministratorFlag(int administratorFlag) {
+		this.administratorFlag = administratorFlag;
 	}
 	public int getStatus() {
 		return status;
@@ -122,6 +129,7 @@ public class UserDto implements Serializable {
 		out += "temp_salt: " + this.getTempSalt() + delimiter;
 		out += "activation_code: " + this.getActivationCode() + delimiter;
 		out += "public key: " + this.getPublicKey() + delimiter;
+		out += "public key bytes: " + this.getPublicKeyBytes().toString() + delimiter;
 		out += "admin_flag: " + this.getAdministratorFlag() + delimiter;
 		out += "status: " + this.getStatus() + delimiter;
 
