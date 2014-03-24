@@ -15,42 +15,65 @@ public class VoteDto implements Serializable{
 	 */
 	private static final long serialVersionUID = 6647026320380230760L;
 
-	private int user_id;		// required to get the corresponding  public key of the user
-	private int election_id;
-	private String vote_encrypted;
-	private String vote_signature;
+	private int userId;		// required to get the corresponding  public key of the user
+	private int electionId;
+	private String voteEncrypted;
+	private String voteSignature;
 	private Timestamp timestamp;
 	
 	
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int user_id) {
+		this.userId = user_id;
 	}
-	public int getElection_id() {
-		return election_id;
+	public int getElectionId() {
+		return electionId;
 	}
-	public void setElection_id(int election_id) {
-		this.election_id = election_id;
+	public void setElectionId(int electionId) {
+		this.electionId = electionId;
 	}
-	public String getVote_encrypted() {
-		return vote_encrypted;
+	public String getVoteEncrypted() {
+		return voteEncrypted;
 	}
-	public void setVote_encrypted(String vote_encrypted) {
-		this.vote_encrypted = vote_encrypted;
+	public void setVote_encrypted(String voteEncrypted) {
+		this.voteEncrypted = voteEncrypted;
 	}
-	public String getVote_signature() {
-		return vote_signature;
+	public String getVoteSignature() {
+		return voteSignature;
 	}
-	public void setVote_signature(String vote_signature) {
-		this.vote_signature = vote_signature;
+	public void setVote_signature(String voteSignature) {
+		this.voteSignature = voteSignature;
 	}
 	public Timestamp getTimestamp() {
 		return timestamp;
 	}
 	public void setTimestamp(Timestamp timestamp) {
 		this.timestamp = timestamp;
+	}
+	
+	public Validator Validate(){
+		boolean valid = true;
+		String status = "";
+		Validator v = new Validator();
+		InputValidation iv = new InputValidation();
+		
+		v = iv.validateInt(this.getUserId(), "User ID");
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateInt(this.getElectionId(), "Election ID");
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateString(this.getVoteEncrypted(), "Encrypted Vote");
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v.setVerified(valid);
+		v.setStatus(status);
+		return v;
 	}
 	
 	
@@ -61,9 +84,9 @@ public class VoteDto implements Serializable{
 
 		out += "Vote " + delimiter;
 
-		out += "election id\t\t: " + this.getElection_id() + delimiter;
-		out += "encrypted vote\t: " + this.getVote_encrypted() + delimiter;
-		out += "signature of vote\t: " + this.getVote_signature() + delimiter;
+		out += "election id\t\t: " + this.getElectionId() + delimiter;
+		out += "encrypted vote\t: " + this.getVoteEncrypted() + delimiter;
+		out += "signature of vote\t: " + this.getVoteSignature() + delimiter;
 
 		
 		out += endOfString;
