@@ -37,13 +37,13 @@ public class VoteDto implements Serializable{
 	public String getVoteEncrypted() {
 		return voteEncrypted;
 	}
-	public void setVote_encrypted(String voteEncrypted) {
+	public void setVoteEncrypted(String voteEncrypted) {
 		this.voteEncrypted = voteEncrypted;
 	}
 	public String getVoteSignature() {
 		return voteSignature;
 	}
-	public void setVote_signature(String voteSignature) {
+	public void setVoteSignature(String voteSignature) {
 		this.voteSignature = voteSignature;
 	}
 	public Timestamp getTimestamp() {
