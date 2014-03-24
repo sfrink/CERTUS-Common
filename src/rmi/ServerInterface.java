@@ -44,5 +44,5 @@ public interface ServerInterface extends Remote {
     public Validator getTallierPublicKey() throws RemoteException;
 
 
-
+    public String byteArraytoHex(byte[] arr) throws RemoteException;
 }
