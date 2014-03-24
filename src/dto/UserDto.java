@@ -90,6 +90,22 @@ public class UserDto implements Serializable {
 		this.status = status;
 	}
 	
+	public Validator Validate()
+	{
+		boolean valid = true;
+		String status = "";
+		Validator v = new Validator();
+
+		InputValidation iv=new InputValidation();
+		
+		v = iv.validateString(this.getFirstName(), "First Name");
+	    
+		
+		v.setVerified(v.isVerified() && valid);
+		v.setStatus(v.getStatus() + status);
+		return v;
+	}
+	
 	public String toString() {
 		String out = "";
 		String delimiter = "\n";
