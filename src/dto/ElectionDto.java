@@ -123,7 +123,11 @@ public class ElectionDto implements Serializable{
 		out += "statusDesc\t: " + this.getStatusDescription() + delimiter;
 		out += "start date_time	: " + this.getStartDatetime() + delimiter;
 		out += "close date_time	: " + this.getCloseDatetime() + delimiter;
-		out += "Candidates\t:" + this.getCandidateList().toString();
+		if (this.getCandidateList() != null) {
+			out += "Candidates\t:" + this.getCandidateList().toString() + delimiter;
+		} else {
+			out += "Candidates\t:empty" + delimiter;
+		}
 		
 		out += endOfString;
 
