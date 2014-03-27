@@ -129,7 +129,7 @@ public class UserDto implements Serializable {
 		out += "temp_salt: " + this.getTempSalt() + delimiter;
 		out += "activation_code: " + this.getActivationCode() + delimiter;
 		out += "public key: " + this.getPublicKey() + delimiter;
-		out += "public key bytes: " + this.getPublicKeyBytes().toString() + delimiter;
+		out += "public key bytes: " + (new String(this.getPublicKeyBytes())) + delimiter;
 		out += "admin_flag: " + this.getAdministratorFlag() + delimiter;
 		out += "status: " + this.getStatus() + delimiter;
 
