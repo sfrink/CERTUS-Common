@@ -59,7 +59,7 @@ public class ElectionProgressDto implements Serializable
 		out += "id\t\t: " + this.getElectionId() + delimiter;
 		out += "valid votes\t: " + this.getValidVotes() + delimiter;
 		out += "rejected votes\t: " + this.getRejectedVotes() + delimiter;
-		
+		out += "total votes\t: " + this.getTotalVotes() + delimiter;
 		
 		out += endOfString;
 
