@@ -66,7 +66,9 @@ public class CandidateDto implements Serializable{
 	public void setDisplayOrder(int displayOrder) {
 		this.displayOrder = displayOrder;
 	}
-	
+	public void addVoteCount() {
+		this.voteCount++;
+	}
 	public int getVoteCount() {
 		return voteCount;
 	}
