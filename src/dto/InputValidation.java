@@ -10,8 +10,11 @@ public class InputValidation {
 	
 	public Validator validateString(String str, String label) {
 		int stdStrLen = 1024;
-		
 
+		return validateString(str, label, stdStrLen);
+	}
+	
+	public Validator validateString(String str, String label, int maxCharacters) {
 		Validator v = new Validator();
 		v.setVerified(true);
 		v.setStatus("");
@@ -19,9 +22,9 @@ public class InputValidation {
 		if (str.isEmpty()) {
 			v.setVerified(false);
 			v.setStatus(label + " field cannot be empty" + delimiter);
-		} else if (str.length() > stdStrLen) {
+		} else if (str.length() > maxCharacters) {
 			v.setVerified(false);
-			v.setStatus(label + " length cannot be longer than " + stdStrLen
+			v.setStatus(label + " length cannot be longer than " + maxCharacters
 					+ " characters" + delimiter);
 		}
 
