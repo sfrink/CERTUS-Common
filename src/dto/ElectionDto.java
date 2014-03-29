@@ -19,6 +19,7 @@ public class ElectionDto implements Serializable{
 	
 	private int electionId;
 	private String electionName;
+	private String electionDescription;
 	private int ownerId;
 	private int status;
 	private String statusCode;
@@ -39,6 +40,12 @@ public class ElectionDto implements Serializable{
 	}
 	public void setElectionName(String electionName) {
 		this.electionName = electionName;
+	}
+	public String getElectionDescription() {
+		return electionDescription;
+	}
+	public void setElectionDescription(String electionDescription) {
+		this.electionDescription = electionDescription;
 	}
 	public int getOwnerId() {
 		return ownerId;
@@ -117,12 +124,14 @@ public class ElectionDto implements Serializable{
 		out += "Election " + delimiter;
 		out += "id\t\t: " + this.getElectionId() + delimiter;
 		out += "election name\t: " + this.getElectionName() + delimiter;
+		out += "election desc\t" + this.getElectionDescription() + delimiter;
 		out += "election owner\t: " + this.getOwnerId() + delimiter;
 		out += "status\t\t: " + this.getStatus() + delimiter;
 		out += "statusCode\t: " + this.getStatusCode() + delimiter;
 		out += "statusDesc\t: " + this.getStatusDescription() + delimiter;
 		out += "start date_time	: " + this.getStartDatetime() + delimiter;
 		out += "close date_time	: " + this.getCloseDatetime() + delimiter;
+		
 		if (this.getCandidateList() != null) {
 			out += "Candidates\t:" + this.getCandidateList().toString() + delimiter;
 		} else {
