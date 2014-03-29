@@ -14,6 +14,8 @@ import enumeration.ElectionStatus;
 
 public class ElectionDto implements Serializable{
 
+	private static final int maxLengthElectionName = 128;
+	private static final int maxLengthElectionDescription = 1024;
 	
 	private static final long serialVersionUID = -5229576755268759820L;
 	
@@ -27,6 +29,7 @@ public class ElectionDto implements Serializable{
 	private Timestamp startDatetime;
 	private Timestamp closeDatetime;
 	private ArrayList<CandidateDto> candidateList;
+	private String candidatesListString;
 	
 	
 	public int getElectionId() {
@@ -68,7 +71,6 @@ public class ElectionDto implements Serializable{
 	public int getStatus() {
 		return status;
 	}
-	
 	public void setStatus(int status) {
 		this.status = status;
 	}
@@ -84,12 +86,17 @@ public class ElectionDto implements Serializable{
 	public void setCloseDatetime(Timestamp closeDatetime) {
 		this.closeDatetime = closeDatetime;
 	}
-
 	public ArrayList<CandidateDto> getCandidateList() {
 		return candidateList;
 	}
 	public void setCandidateList(ArrayList<CandidateDto> candidateList) {
 		this.candidateList = candidateList;
+	}
+	public String getCandidatesListString() {
+		return candidatesListString;
+	}
+	public void setCandidatesListString(String candidateListString) {
+		this.candidatesListString = candidateListString;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -97,14 +104,20 @@ public class ElectionDto implements Serializable{
 	
 	public Validator Validate()
 	{
-		boolean valid = true;
+		boolean valid;
 		String status = "";
 		Validator v = new Validator();
 
 		InputValidation iv=new InputValidation();
 		
-		v = iv.validateString(this.getElectionName(), "Election Name");
-	    
+		v = iv.validateString(this.getElectionName(), "Election Name", maxLengthElectionName);
+		valid = v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateString(this.getElectionDescription(), "Election Description", maxLengthElectionDescription);
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
 		for (CandidateDto candidate : this.getCandidateList())
 		{
 			Validator vCandidate = candidate.Validate();
@@ -131,11 +144,11 @@ public class ElectionDto implements Serializable{
 		out += "statusDesc\t: " + this.getStatusDescription() + delimiter;
 		out += "start date_time	: " + this.getStartDatetime() + delimiter;
 		out += "close date_time	: " + this.getCloseDatetime() + delimiter;
-		
+		out += "candidates String: " + this.getCandidatesListString() + delimiter;
 		if (this.getCandidateList() != null) {
-			out += "Candidates\t:" + this.getCandidateList().toString() + delimiter;
+			out += "candidates\t:" + this.getCandidateList().toString() + delimiter;
 		} else {
-			out += "Candidates\t:empty" + delimiter;
+			out += "candidates\t:empty" + delimiter;
 		}
 		
 		out += endOfString;
