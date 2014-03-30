@@ -4,6 +4,12 @@ import java.io.Serializable;
 
 public class UserDto implements Serializable {
 	
+
+	private static final long	serialVersionUID	= 5934601211073953131L;
+	
+	private static final int maxLengthUserFirstName = 256;
+	private static final int maxLengthUserLastName = 256;
+	
 	private int userId;
 	private String firstName;
 	private String lastName;
@@ -17,6 +23,8 @@ public class UserDto implements Serializable {
 	private byte[] publicKeyBytes;
 	private int administratorFlag;
 	private int status;
+	private String statusDescription;
+	
 	
 	public int getUserId() {
 		return userId;
@@ -96,7 +104,12 @@ public class UserDto implements Serializable {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	
+	public String getStatusDescription() {
+		return statusDescription;
+	}
+	public void setStatusDescription(String statusDescription) {
+		this.statusDescription = statusDescription;
+	}
 	public Validator Validate()
 	{
 		boolean valid = true;
@@ -105,11 +118,20 @@ public class UserDto implements Serializable {
 
 		InputValidation iv=new InputValidation();
 		
-		v = iv.validateString(this.getFirstName(), "First Name");
-	    
+		v = iv.validateString(this.getFirstName(), "First Name", maxLengthUserFirstName);
+		valid = v.isVerified();
+		status += v.getStatus();
 		
-		v.setVerified(v.isVerified() && valid);
-		v.setStatus(v.getStatus() + status);
+		v = iv.validateString(this.getLastName(), "Last Name", maxLengthUserLastName);
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateEmail(this.getEmail(), "Email");
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v.setVerified(valid);
+		v.setStatus(status);
 		return v;
 	}
 	

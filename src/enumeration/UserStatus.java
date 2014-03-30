@@ -9,9 +9,7 @@ import java.util.Map;
  */
 
 public enum UserStatus {
-	
-	//ALL(-1, "All", "All the users"),
-	//DEFAULT(0, "Default", "All the users"),
+
 	ACTIVE (1, "Active", "Active User"),
 	LOCKED (2, "Locked", "User account is locked");
 

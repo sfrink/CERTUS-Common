@@ -6,16 +6,24 @@ import java.util.ArrayList;
 
 import dto.CandidateDto;
 import dto.ElectionDto;
+import dto.UserDto;
 import dto.Validator;
 import dto.VoteDto;
 import enumeration.Status;
 import enumeration.ElectionStatus;
+import enumeration.UserStatus;
 
 public interface ServerInterface extends Remote {
     public String sayHello(String name) throws RemoteException;   
     
     public Validator checkIfUsernamePasswordMatch(String email, String plainPass)
     		throws RemoteException;
+    
+    public Validator addUser(UserDto userDto) throws RemoteException ;
+    public Validator selectAllUsers() throws RemoteException ;
+    public Validator editUser(UserDto userDto) throws RemoteException ;
+    public Validator editUserStatus(int userId, UserStatus userStatus) throws RemoteException;
+    public Validator editUserType(int userId, int userType) throws RemoteException;
     
  // Election
     public Validator selectElection(int id) throws RemoteException;
