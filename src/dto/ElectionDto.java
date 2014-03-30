@@ -118,11 +118,12 @@ public class ElectionDto implements Serializable{
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
-		for (CandidateDto candidate : this.getCandidateList())
-		{
-			Validator vCandidate = candidate.Validate();
-			valid &= vCandidate.isVerified();
-			status += "\n" + vCandidate.getStatus();
+		if (this.getCandidateList() != null) {
+			for (CandidateDto candidate : this.getCandidateList() ) {
+				Validator vCandidate = candidate.Validate();
+				valid &= vCandidate.isVerified();
+				status += "\n" + vCandidate.getStatus();
+			}
 		}
 		v.setVerified(v.isVerified() && valid);
 		v.setStatus(v.getStatus() + status);
