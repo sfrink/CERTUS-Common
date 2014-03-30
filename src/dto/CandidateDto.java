@@ -19,6 +19,7 @@ public class CandidateDto implements Serializable{
 
 	private static final long serialVersionUID = 8249581055443866282L;
 	
+	private static final int maxLengthCandidateName = 128;
 	
 	private int candidateId;
 	private String candidateName;
@@ -85,7 +86,7 @@ public class CandidateDto implements Serializable{
 		
 		InputValidation iv=new InputValidation();
 		
-		v = iv.validateString(this.getCandidateName(), "Candidate Name");
+		v = iv.validateString(this.getCandidateName(), "Candidate Name", maxLengthCandidateName);
 		verified = v.isVerified();
 		status = v.getStatus();
 		
