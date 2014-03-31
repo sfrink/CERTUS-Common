@@ -20,6 +20,7 @@ public interface ServerInterface extends Remote {
     		throws RemoteException;
     
     public Validator addUser(UserDto userDto) throws RemoteException ;
+    public Validator selectUser(int userId) throws RemoteException;
     public Validator selectAllUsers() throws RemoteException ;
     public Validator editUser(UserDto userDto) throws RemoteException ;
     public Validator editUserStatus(int userId, UserStatus userStatus) throws RemoteException;
