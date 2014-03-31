@@ -16,6 +16,7 @@ public class ElectionDto implements Serializable{
 
 	private static final int maxLengthElectionName = 128;
 	private static final int maxLengthElectionDescription = 1024;
+	private static final int maxLengthCandidatesListString = 2048;
 	
 	private static final long serialVersionUID = -5229576755268759820L;
 	
@@ -115,6 +116,10 @@ public class ElectionDto implements Serializable{
 		status += v.getStatus();
 		
 		v = iv.validateString(this.getElectionDescription(), "Election Description", maxLengthElectionDescription);
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateString(this.getElectionDescription(), "Candidates List (string)", maxLengthCandidatesListString);
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
