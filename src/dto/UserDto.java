@@ -138,7 +138,7 @@ public class UserDto implements Serializable {
 	public String toString() {
 		String out = "";
 		String delimiter = "\n";
-		String endOfString = "\n\n";
+		String endOfString = "<<< end >>> \n";
 
 		out += "User ";
 		out += "id: " + this.getUserId() + delimiter;
