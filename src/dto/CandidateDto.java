@@ -82,7 +82,7 @@ public class CandidateDto implements Serializable{
 		
 		boolean verified;
 		String status ;
-		String header = "Candidate Validation Status : \n";
+		String header = "";
 		
 		InputValidation iv=new InputValidation();
 		
