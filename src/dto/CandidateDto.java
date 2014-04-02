@@ -27,6 +27,7 @@ public class CandidateDto implements Serializable{
 	private int status;
 	private int displayOrder;
 	private int voteCount;
+	private boolean winner;
 	
 	
 	public int getCandidateId() {
@@ -76,6 +77,12 @@ public class CandidateDto implements Serializable{
 	public void setVoteCount(int voteCount) {
 		this.voteCount = voteCount;
 	}
+	public boolean isWinner() {
+		return winner;
+	}
+	public void setWinner(boolean winner) {
+		this.winner = winner;
+	}
 	public Validator Validate()
 	{
 		Validator v = new Validator();
@@ -117,6 +124,7 @@ public class CandidateDto implements Serializable{
 		out += "election_id\t: " + this.getElectionId() + delimiter;
 		out += "display_order\t: " + this.getDisplayOrder() + delimiter;
 		out += "count of votes\t:" + this.getVoteCount() + delimiter;
+		out += "winner\t:" + this.isWinner() + delimiter;
 		
 		out += endOfString;
 

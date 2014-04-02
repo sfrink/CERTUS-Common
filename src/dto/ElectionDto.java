@@ -27,7 +27,6 @@ public class ElectionDto implements Serializable{
 	private int status;
 	private String statusCode;
 	private String statusDescription;
-	private String winner;
 	private Timestamp startDatetime;
 	private Timestamp closeDatetime;
 	private ArrayList<CandidateDto> candidateList;
@@ -69,12 +68,6 @@ public class ElectionDto implements Serializable{
 	}
 	public void setStatusDescription(String statusDescription) {
 		this.statusDescription = statusDescription;
-	}
-	public String getWinner() {
-		return winner;
-	}
-	public void setWinner(String winner) {
-		this.winner = winner;
 	}
 	public int getStatus() {
 		return status;
@@ -127,6 +120,14 @@ public class ElectionDto implements Serializable{
 		status += v.getStatus();
 		
 		v = iv.validateString(this.getElectionDescription(), "Candidates List (string)", maxLengthCandidatesListString);
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateTimestampGeneral(this.getStartDatetime(), "Election Start time");
+		valid &= v.isVerified();
+		status += v.getStatus();
+		
+		v = iv.validateTimestampGeneral(this.getCloseDatetime(), "Election Close time");
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
