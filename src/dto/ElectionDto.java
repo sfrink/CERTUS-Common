@@ -164,7 +164,6 @@ public class ElectionDto implements Serializable{
 		} else {
 			out += "candidates\t:empty" + delimiter;
 		}
-		out += "winner is\t\t: " + this.getWinner() + delimiter;
 		
 		out += endOfString;
 
