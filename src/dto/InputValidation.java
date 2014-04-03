@@ -31,6 +31,19 @@ public class InputValidation {
 		return v;
 	}
 
+	public Validator validateStringAllowNull(String str, String label, int maxCharacters) {
+		Validator v = new Validator();
+		v.setVerified(true);
+		v.setStatus("");
+
+		if ((str != null) && (str.length() > maxCharacters) ) {
+			v.setVerified(false);
+			v.setStatus(label + " length cannot be longer than " + maxCharacters
+					+ " characters" + delimiter);
+		}
+
+		return v;
+	}
 	public Validator validateStatusInt(int input, String label) {
 		int statusActive = 1;
 		int statusInactive = 0;

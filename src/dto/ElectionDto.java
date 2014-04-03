@@ -17,6 +17,7 @@ public class ElectionDto implements Serializable{
 	private static final int maxLengthElectionName = 128;
 	private static final int maxLengthElectionDescription = 1024;
 	private static final int maxLengthCandidatesListString = 2048;
+	private static final int maxLengthStartAndCloseDateTime = 128;
 	
 	private static final long serialVersionUID = -5229576755268759820L;
 	
@@ -27,8 +28,8 @@ public class ElectionDto implements Serializable{
 	private int status;
 	private String statusCode;
 	private String statusDescription;
-	private Timestamp startDatetime;
-	private Timestamp closeDatetime;
+	private String startDatetime;
+	private String closeDatetime;
 	private ArrayList<CandidateDto> candidateList;
 	private String candidatesListString;
 	
@@ -75,16 +76,16 @@ public class ElectionDto implements Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Timestamp getStartDatetime() {
+	public String getStartDatetime() {
 		return startDatetime;
 	}
-	public void setStartDatetime(Timestamp startDatetime) {
+	public void setStartDatetime(String startDatetime) {
 		this.startDatetime = startDatetime;
 	}
-	public Timestamp getCloseDatetime() {
+	public String getCloseDatetime() {
 		return closeDatetime;
 	}
-	public void setCloseDatetime(Timestamp closeDatetime) {
+	public void setCloseDatetime(String closeDatetime) {
 		this.closeDatetime = closeDatetime;
 	}
 	public ArrayList<CandidateDto> getCandidateList() {
@@ -123,11 +124,11 @@ public class ElectionDto implements Serializable{
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
-		v = iv.validateTimestampGeneral(this.getStartDatetime(), "Election Start time");
+		v = iv.validateStringAllowNull(this.getStartDatetime(), "Election Start time", maxLengthStartAndCloseDateTime);
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
-		v = iv.validateTimestampGeneral(this.getCloseDatetime(), "Election Close time");
+		v = iv.validateStringAllowNull(this.getCloseDatetime(), "Election Close time", maxLengthStartAndCloseDateTime);
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
