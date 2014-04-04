@@ -24,6 +24,7 @@ public interface ServerInterface extends Remote {
     public Validator selectAllUsers() throws RemoteException ;
     public Validator editUser(UserDto userDto) throws RemoteException ;
     public Validator editUserStatus(int userId, UserStatus userStatus) throws RemoteException;
+    public boolean isAllowed(String sessionID, String method) throws RemoteException;
     
  // Election
     public Validator selectElection(int id) throws RemoteException;
