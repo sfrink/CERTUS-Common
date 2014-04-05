@@ -20,7 +20,8 @@ public class VoteDto implements Serializable{
 	private String voteEncrypted;
 	private String voteSignature;
 	private Timestamp timestamp;
-	
+	private boolean voteSignatureError = false;
+	private String voteSignatureErrorMessage;
 	
 	public int getUserId() {
 		return userId;
@@ -53,6 +54,18 @@ public class VoteDto implements Serializable{
 		this.timestamp = timestamp;
 	}
 	
+	public boolean isVoteSignatureError() {
+		return voteSignatureError;
+	}
+	public void setVoteSignatureError(boolean voteSignatureError) {
+		this.voteSignatureError = voteSignatureError;
+	}
+	public String getVoteSignatureErrorMessage() {
+		return voteSignatureErrorMessage;
+	}
+	public void setVoteSignatureErrorMessage(String voteSignatureErrorStatus) {
+		this.voteSignatureErrorMessage = voteSignatureErrorStatus;
+	}
 	public Validator Validate(){
 		boolean valid = true;
 		String status = "";
@@ -87,7 +100,8 @@ public class VoteDto implements Serializable{
 		out += "election id\t\t: " + this.getElectionId() + delimiter;
 		out += "encrypted vote\t: " + this.getVoteEncrypted() + delimiter;
 		out += "signature of vote\t: " + this.getVoteSignature() + delimiter;
-
+		out += "Error status in signature : " + this.isVoteSignatureError() + delimiter;
+		out += "Error message in signature : " + this.getVoteSignatureErrorMessage() + delimiter; 
 		
 		out += endOfString;
 
