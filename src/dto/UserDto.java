@@ -24,6 +24,7 @@ public class UserDto implements Serializable {
 	private int administratorFlag;
 	private int status;
 	private String statusDescription;
+	private String sessionId;
 	
 	
 	public int getUserId() {
@@ -110,6 +111,12 @@ public class UserDto implements Serializable {
 	public void setStatusDescription(String statusDescription) {
 		this.statusDescription = statusDescription;
 	}
+	public String getSessionId() {
+		return sessionId;
+	}
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
 	public Validator Validate()
 	{
 		boolean valid = true;
@@ -159,7 +166,8 @@ public class UserDto implements Serializable {
 		}
 		out += "admin_flag: " + this.getAdministratorFlag() + delimiter;
 		out += "status: " + this.getStatus() + delimiter;
-
+		out += "session id: " + this.getSessionId() + delimiter;
+		
 		out += endOfString;
 
 		return out;
