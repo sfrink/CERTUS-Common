@@ -30,7 +30,11 @@ public class Validator implements Serializable {
 	}
 
 	public void setStatus(String status) {
-		this.status = status;
+		if (!status.trim().isEmpty()) {
+			this.status = status + System.getProperty("line.separator");
+		} else {
+			this.status = status;
+		}
 	}
 	
 	public String toString() {
