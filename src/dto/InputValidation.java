@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputValidation {
-	String delimiter = "\n";
+	
 	
 	public Validator validateString(String str, String label) {
 		int stdStrLen = 1024;
@@ -21,11 +21,11 @@ public class InputValidation {
 
 		if (str.isEmpty()) {
 			v.setVerified(false);
-			v.setStatus(label + " field cannot be empty" + delimiter);
+			v.setStatus(label + " field cannot be empty");
 		} else if (str.length() > maxCharacters) {
 			v.setVerified(false);
 			v.setStatus(label + " length cannot be longer than " + maxCharacters
-					+ " characters" + delimiter);
+					+ " characters");
 		}
 
 		return v;
@@ -38,8 +38,9 @@ public class InputValidation {
 
 		if ((str != null) && (str.length() > maxCharacters) ) {
 			v.setVerified(false);
-			v.setStatus(label + " length cannot be longer than " + maxCharacters
-					+ " characters" + delimiter);
+			v.setStatus("Error " + label 
+					+ " length cannot be longer than " + maxCharacters
+					+ " characters");
 		}
 
 		return v;
@@ -55,9 +56,10 @@ public class InputValidation {
 
 		if (input != statusActive && input != statusInactive) {
 			v.setVerified(false);
-			v.setStatus(label
+			v.setStatus("Error " 
+					+ label
 					+ " has illegal value. Something nasty is happening."
-					+ delimiter);
+					);
 		}
 
 		return v;
@@ -72,13 +74,33 @@ public class InputValidation {
 
 		if (input < 1) {
 			v.setVerified(false);
-			v.setStatus("Error " + label
-					+ " is not a proper int. Error happened." + delimiter);
+			v.setStatus("Error " 
+					+ label
+					+ " is not a proper int. Error happened.");
 		}
 
 		return v;
 	}
 
+    public Validator validateInt(int input, String label, int[] allowed) {
+    	Validator v = new Validator();
+
+		
+		v.setStatus("Error " 
+				+ label
+				+ " does not hold valid value." );
+		
+		for (int value : allowed) {
+			if (input == value) {
+				v.setVerified(true);
+				v.setStatus("");
+				break;
+			}
+		}
+		
+		return v;
+    }
+    
 	public Validator validateDoubleGeneralWithNull(double input, String label) {
 		
 		Validator v = new Validator();
@@ -88,8 +110,9 @@ public class InputValidation {
 
 		if (input < 0) {
 			v.setVerified(false);
-			v.setStatus("Error " + label
-					+ " is not a proper double. Error happened." + delimiter);
+			v.setStatus("Error " 
+					+ label
+					+ " is not a proper double. Error happened.");
 		}
 
 		return v;
@@ -104,13 +127,14 @@ public class InputValidation {
 
 		if (input != defaultValue) {
 			v.setVerified(false);
-			v.setStatus("Error " + label
-					+ " does not hold default value." + delimiter);
+			v.setStatus("Error " 
+					+ label
+					+ " does not hold default value." );
 		}
 
 		return v;
 	}
-                
+    
 	public Validator validateDoubleGeneral(double input, String label) {
 		
 		Validator v = new Validator();
@@ -120,8 +144,9 @@ public class InputValidation {
 
 		if (input <= 0) {
 			v.setVerified(false);
-			v.setStatus("Error " + label
-					+ " is not a proper double. Error happened." + delimiter);
+			v.setStatus("Error " 
+					+ label
+					+ " is not a proper double. Error happened.");
 		}
 
 		return v;
@@ -136,7 +161,9 @@ public class InputValidation {
 
 		if (input == null) {
 			v.setVerified(false);
-			v.setStatus("Error " + label + " is not a proper date." + delimiter);
+			v.setStatus("Error " 
+					+ label 
+					+ " is not a proper date.");
 		}
 
 		return v;
@@ -152,9 +179,12 @@ public class InputValidation {
 		Matcher matcher = pattern.matcher(str);
 
 		v.setVerified(false);
-		v.setStatus(label + " is not an email of proper form" + delimiter);
+		v.setStatus("Error " 
+				+ label 
+				+ " is not in proper email form ");
 
 		if (matcher.matches()) {
+
 			v.setVerified(true);
 			v.setStatus("");
 		}
