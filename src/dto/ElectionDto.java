@@ -128,25 +128,22 @@ public class ElectionDto implements Serializable{
 	public void setRegisteredEmailList(String registeredVotersEmailList) {
 		this.registeredEmailList = registeredVotersEmailList;
 	}
-	public void setVotersEmailList(String emailList) {
-		this.registeredEmailList = emailList;
-	}
 	public String getUnregisteredEmailList() {
 		return unregisteredEmailList;
 	}
 	public void setUnregisteredEmailList(String emailList) {
 		this.unregisteredEmailList = emailList;
 	}
-	public boolean isVotersEmailListError() {
+	public boolean isEmailListError() {
 		return emailListError;
 	}
-	public void setVotersEmailListError(boolean emailListError) {
+	public void setEmailListError(boolean emailListError) {
 		this.emailListError = emailListError;
 	}
-	public String getVotersEmailListMessage() {
+	public String getEmailListMessage() {
 		return emailListMessage;
 	}
-	public void setVotersEmailListMessage(String emailListMessage) {
+	public void setEmailListMessage(String emailListMessage) {
 		this.emailListMessage = emailListMessage;
 	}
 	public static long getSerialversionuid() {
@@ -243,5 +240,6 @@ public class ElectionDto implements Serializable{
 
 		return out;
 	}
+	
 	
 }
