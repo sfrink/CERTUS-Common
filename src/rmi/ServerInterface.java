@@ -20,36 +20,36 @@ public interface ServerInterface extends Remote {
     		throws RemoteException;
     
     public Validator addUser(UserDto userDto) throws RemoteException ;
-    public Validator selectUser(int userId) throws RemoteException;
-    public Validator selectAllUsers() throws RemoteException ;
-    public Validator editUser(UserDto userDto) throws RemoteException ;
-    public Validator editUserStatus(int userId, UserStatus userStatus) throws RemoteException;
+    public Validator selectUser(int userId, String sessionID) throws RemoteException;
+    public Validator selectAllUsers(String sessionID) throws RemoteException ;
+    public Validator editUser(UserDto userDto, String sessionID) throws RemoteException ;
+    public Validator editUserStatus(int userId, UserStatus userStatus, String sessionID) throws RemoteException;
     public boolean isAllowed(String sessionID, String method) throws RemoteException;
     
- // Election
-    public Validator selectElection(int id) throws RemoteException;
-    public Validator selectElections(ElectionStatus electionStatus) throws RemoteException;
-    public Validator selectElectionsNotInStatus(ElectionStatus electionStatus) throws RemoteException;
-    public Validator selectElections() throws RemoteException;
-    public Validator selectElectionsOwnedByUser(int electionOwnerId, ElectionStatus electionStatus) throws RemoteException;
-    public Validator selectElectionsOwnedByUser(int electionOwnerId) throws RemoteException;
-    public Validator addElection(ElectionDto electionDto)throws RemoteException;
-    public Validator editElection(ElectionDto electionDto)throws RemoteException;
-    public Validator editElectionStatus(int electionId, ElectionStatus electionStatus) throws RemoteException;
-    public Validator openElectionAndPopulateCandidates(int electionId) throws RemoteException;
-    public Validator selectAllElectionsForVoter(int user_id) throws RemoteException;
-    public Validator publishResults(int electionId) throws RemoteException;
+    // Election
+    public Validator selectElection(int id, String sessionID) throws RemoteException;
+    public Validator selectElections(ElectionStatus electionStatus, String sessionID) throws RemoteException;
+    public Validator selectElectionsNotInStatus(ElectionStatus electionStatus, String sessionID) throws RemoteException;
+    public Validator selectElections(String sessionID) throws RemoteException;
+    public Validator selectElectionsOwnedByUser(int electionOwnerId, ElectionStatus electionStatus, String sessionID) throws RemoteException;
+    public Validator selectElectionsOwnedByUser(int electionOwnerId, String sessionID) throws RemoteException;
+    public Validator addElection(ElectionDto electionDto, String sessionID)throws RemoteException;
+    public Validator editElection(ElectionDto electionDto, String sessionID)throws RemoteException;
+    public Validator editElectionStatus(int electionId, ElectionStatus electionStatus, String sessionID) throws RemoteException;
+    public Validator openElectionAndPopulateCandidates(int electionId, String sessionID) throws RemoteException;
+    public Validator selectAllElectionsForVoter(int user_id, String sessionID) throws RemoteException;
+    public Validator publishResults(int electionId, String sessionID) throws RemoteException;
     
     // Candidate
-    public Validator selectCandidate(int id) throws RemoteException;
-    public Validator selectCandidatesOfElection(int electionId) throws RemoteException;
-    public Validator selectCandidatesOfElection(int electionId, Status candidateStatus) throws RemoteException;
-    public Validator editCandidateStatus(int candidateId, Status status) throws RemoteException;
+    public Validator selectCandidate(int id, String sessionID) throws RemoteException;
+    public Validator selectCandidatesOfElection(int electionId, String sessionID) throws RemoteException;
+    public Validator selectCandidatesOfElection(int electionId, Status candidateStatus, String sessionID) throws RemoteException;
+    public Validator editCandidateStatus(int candidateId, Status status, String sessionID) throws RemoteException;
     
     
     //Vote
-    public Validator vote(VoteDto v) throws RemoteException;
+    public Validator vote(VoteDto v, String sessionID) throws RemoteException;
     public Validator getTallierPublicKey() throws RemoteException;
-    public Validator voteProgressStatusForElection(int electionId) throws RemoteException;
-    public Validator selectResults(int electionId) throws RemoteException;
+    public Validator voteProgressStatusForElection(int electionId, String sessionID) throws RemoteException;
+    public Validator selectResults(int electionId, String sessionID) throws RemoteException;
 }
