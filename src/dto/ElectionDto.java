@@ -42,7 +42,9 @@ public class ElectionDto implements Serializable{
 	private String unregisteredEmailList;
 	private boolean emailListError = false;
 	private String emailListMessage = "";
-	
+	private String password;
+	private String passwordErrorMessage = "";
+	private boolean passwordError = false;
 	
 	public int getElectionId() {
 		return electionId;
@@ -145,6 +147,24 @@ public class ElectionDto implements Serializable{
 	}
 	public void setEmailListMessage(String emailListMessage) {
 		this.emailListMessage = emailListMessage;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getPasswordErrorMessage() {
+		return passwordErrorMessage;
+	}
+	public void setPasswordErrorMessage(String passwordErrorMessage) {
+		this.passwordErrorMessage = passwordErrorMessage;
+	}
+	public boolean isPasswordError() {
+		return passwordError;
+	}
+	public void setPasswordError(boolean passwordError) {
+		this.passwordError = passwordError;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
