@@ -37,14 +37,20 @@ public class ElectionDto implements Serializable{
 	private ArrayList<CandidateDto> candidateList;
 	private String candidatesListString;
 	private int electionType;
+
 	private String emailList;
 	private String registeredEmailList;
 	private String unregisteredEmailList;
 	private boolean emailListError = false;
 	private String emailListMessage = "";
+	
+	private String tempEmailList;
+	private boolean tempEmailListError = false;	
+	private String tempEmailListErrorMessage;
+
 	private String password;
-	private String passwordErrorMessage = "";
 	private boolean passwordError = false;
+	private String passwordErrorMessage = "";
 	
 	public int getElectionId() {
 		return electionId;
@@ -165,6 +171,27 @@ public class ElectionDto implements Serializable{
 	}
 	public void setPasswordError(boolean passwordError) {
 		this.passwordError = passwordError;
+	}
+
+	
+	
+	public String getTempEmailList() {
+		return tempEmailList;
+	}
+	public void setTempEmailList(String tempEmailList) {
+		this.tempEmailList = tempEmailList;
+	}
+	public boolean isTempEmailListError() {
+		return tempEmailListError;
+	}
+	public void setTempEmailListError(boolean tempEmailListError) {
+		this.tempEmailListError = tempEmailListError;
+	}
+	public String getTempEmailListErrorMessage() {
+		return tempEmailListErrorMessage;
+	}
+	public void setTempEmailListErrorMessage(String tempEmailListErrorMessage) {
+		this.tempEmailListErrorMessage = tempEmailListErrorMessage;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
