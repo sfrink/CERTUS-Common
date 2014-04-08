@@ -1,5 +1,6 @@
 package rmi;
 
+import java.io.InputStream;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public interface ServerInterface extends Remote {
     public Validator logOut(String sessionID) throws RemoteException;
     public Validator updateUser(UserDto userDto, String sessionID) throws RemoteException;
     public Validator updateUserPassword(UserDto userDto, String sessionID) throws RemoteException;
+    public Validator uploadPubKey(byte[] keyBytes, String sessionID) throws RemoteException;
     
     // Election
     public Validator selectElection(int id, String sessionID) throws RemoteException;
