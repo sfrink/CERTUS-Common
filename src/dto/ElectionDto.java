@@ -37,14 +37,16 @@ public class ElectionDto implements Serializable{
 	private ArrayList<CandidateDto> candidateList;
 	private String candidatesListString;
 	private int electionType;
+
 	private String emailList;
 	private String registeredEmailList;
 	private String unregisteredEmailList;
 	private boolean emailListError = false;
 	private String emailListMessage = "";
+	
 	private String password;
-	private String passwordErrorMessage = "";
 	private boolean passwordError = false;
+	private String passwordErrorMessage = "";
 	
 	public int getElectionId() {
 		return electionId;
@@ -166,6 +168,7 @@ public class ElectionDto implements Serializable{
 	public void setPasswordError(boolean passwordError) {
 		this.passwordError = passwordError;
 	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
