@@ -27,7 +27,9 @@ public interface ServerInterface extends Remote {
     public Validator editUserStatus(int userId, UserStatus userStatus, String sessionID) throws RemoteException;
     public boolean isAllowed(String sessionID, String method) throws RemoteException;
     public Validator generateNewKeys(int userID, String newKeyPass, String sessionID) throws RemoteException;
-    
+    public Validator logOut(String sessionID) throws RemoteException;
+    public Validator updateUser(UserDto userDto, String sessionID) throws RemoteException;
+    public Validator updateUserPassword(UserDto userDto, String sessionID) throws RemoteException;
     
     // Election
     public Validator selectElection(int id, String sessionID) throws RemoteException;
