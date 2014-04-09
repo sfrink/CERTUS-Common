@@ -38,10 +38,10 @@ public class ElectionDto implements Serializable{
 	private String candidatesListString;
 	private int electionType;
 
-	private String emailList;
-	private String registeredEmailList;
-	private String unregisteredEmailList;
-	private String currentEmailList;
+	private String emailList = "";
+	private String registeredEmailList = "";
+	private String unregisteredEmailList = "";
+	private String currentEmailList = "";
 	private boolean emailListError = false;
 	private String emailListMessage = "";
 	
