@@ -41,6 +41,7 @@ public class ElectionDto implements Serializable{
 	private String emailList;
 	private String registeredEmailList;
 	private String unregisteredEmailList;
+	private String currentEmailList;
 	private boolean emailListError = false;
 	private String emailListMessage = "";
 	
@@ -137,6 +138,12 @@ public class ElectionDto implements Serializable{
 	}
 	public void setUnregisteredEmailList(String emailList) {
 		this.unregisteredEmailList = emailList;
+	}
+	public String getCurrentEmailList() {
+		return currentEmailList;
+	}
+	public void setCurrentEmailList(String emailList) {
+		this.currentEmailList = emailList;
 	}
 	public boolean isEmailListError() {
 		return emailListError;
@@ -261,6 +268,7 @@ public class ElectionDto implements Serializable{
 		out += "Email Error Message: " + this.getEmailListMessage() + delimiter;
 		out += "Registered Voters Emails String : " + this.getRegisteredEmailList() + delimiter;
 		out += "Unregistered Voters Emails String : " + this.getUnregisteredEmailList() + delimiter;
+		out += "Current Voters Emails String : " + this.getCurrentEmailList() + delimiter;
 		out += "Password Error  : " + this.isPasswordError() + delimiter;
 		out += "Password Error Message : " + this.getPasswordErrorMessage() + delimiter;
 		
