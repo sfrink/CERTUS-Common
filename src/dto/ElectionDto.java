@@ -213,19 +213,20 @@ public class ElectionDto implements Serializable{
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
-		v = iv.validateStringAllowNull(this.getRegisteredEmailList(), "Allowed users email list", maxLengthAllowedVotersEmail);
-		valid &= v.isVerified();
-		status += v.getStatus();
-		
-		if (this.getEmailList() != null) {
-			String[] voterEmails = this.getEmailList().split(newLine);
-			for (String voterEmail : voterEmails) {
-				Validator vEmail = iv.validateEmail(voterEmail.trim(), "Email address [" + voterEmail.trim() + "] ");
-				valid &= vEmail.isVerified();
-				status += vEmail.getStatus();
+		if (this.getElectionType() == ElectionType.PRIVATE.getCode()) {
+			v = iv.validateStringAllowNull(this.getRegisteredEmailList(), "Allowed users email list", maxLengthAllowedVotersEmail);
+			valid &= v.isVerified();
+			status += v.getStatus();
+			
+			if (this.getEmailList() != null) {
+				String[] voterEmails = this.getEmailList().split(newLine);
+				for (String voterEmail : voterEmails) {
+					Validator vEmail = iv.validateEmail(voterEmail.trim(), "Email address [" + voterEmail.trim() + "] ");
+					valid &= vEmail.isVerified();
+					status += vEmail.getStatus();
+				}
 			}
 		}
-		
 		
 		if (this.getCandidateList() != null) {
 			for (CandidateDto candidate : this.getCandidateList() ) {
