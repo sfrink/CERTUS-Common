@@ -56,7 +56,7 @@ public interface ServerInterface extends Remote {
     
     //Vote
     public Validator vote(VoteDto v, String sessionID) throws RemoteException;
-    public Validator getTallierPublicKey() throws RemoteException;
+    public Validator getTallierPublicKey(int electionId) throws RemoteException;
     public Validator voteProgressStatusForElection(int electionId, String sessionID) throws RemoteException;
     public Validator selectResults(int electionId, String sessionID) throws RemoteException;
 }
