@@ -257,8 +257,13 @@ public class ElectionDto implements Serializable{
 		}
 		out += "Election Type : " + this.getElectionType() + delimiter;
 		out += "Emails String : " + this.getEmailList() + delimiter;
+		out += "Email Error : " + this.isEmailListError() + delimiter;
+		out += "Email Error Message: " + this.getEmailListMessage() + delimiter;
 		out += "Registered Voters Emails String : " + this.getRegisteredEmailList() + delimiter;
 		out += "Unregistered Voters Emails String : " + this.getUnregisteredEmailList() + delimiter;
+		out += "Password Error  : " + this.isPasswordError() + delimiter;
+		out += "Password Error Message : " + this.getPasswordErrorMessage() + delimiter;
+		
 		out += endOfString;
 
 		return out;
