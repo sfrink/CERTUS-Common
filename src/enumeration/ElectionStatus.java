@@ -14,7 +14,7 @@ public enum ElectionStatus {
 	NEW (0, "New", "New election."), 
 	OPEN (1, "Open", "Election is opened for voting."),
 	DELETED (7, "Deleted", "Election is deleted, cannot submit vote."),
-	CLOSED (8, "Closed", "Election is closed, cannot submit vote."),
+	CLOSED (8, "Close", "Election is closed, cannot submit vote."),
 	PUBLISHED (9, "Result Published", "Results of the election is published and finalized.");
 
  
