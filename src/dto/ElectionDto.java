@@ -196,7 +196,7 @@ public class ElectionDto implements Serializable{
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
-		v = iv.validateString(this.getElectionDescription(), "Candidates List (string)", maxLengthCandidatesListString);
+		v = iv.validateString(this.getCandidatesListString(), "Candidates List (string)", maxLengthCandidatesListString);
 		valid &= v.isVerified();
 		status += v.getStatus();
 		
