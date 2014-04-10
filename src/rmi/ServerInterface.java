@@ -41,6 +41,7 @@ public interface ServerInterface extends Remote {
     public Validator selectElectionsOwnedByUser(int electionOwnerId, ElectionStatus electionStatus, String sessionID) throws RemoteException;
     public Validator selectElectionsOwnedByUser(int electionOwnerId, String sessionID) throws RemoteException;
     public Validator addElection(ElectionDto electionDto, String sessionID)throws RemoteException;
+    public Validator addAdditionalUsersToElection(ElectionDto electionDto, String sessionID) throws RemoteException;
     public Validator editElection(ElectionDto electionDto, String sessionID)throws RemoteException;
     public Validator editElectionStatus(int electionId, ElectionStatus electionStatus, String sessionID) throws RemoteException;
     public Validator openElectionAndPopulateCandidates(int electionId, String sessionID) throws RemoteException;
