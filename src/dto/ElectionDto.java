@@ -218,7 +218,7 @@ public class ElectionDto implements Serializable{
 			valid &= v.isVerified();
 			status += v.getStatus();
 			
-			if ((this.getEmailList() != null) || (!this.getEmailList().trim().isEmpty()) ){
+			if ((this.getEmailList() != null) && (!this.getEmailList().trim().isEmpty() ) ){
 				String[] voterEmails = this.getEmailList().split(newLine);
 				for (String voterEmail : voterEmails) {
 					Validator vEmail = iv.validateEmail(voterEmail.trim(), "Email address [" + voterEmail.trim() + "] ");
