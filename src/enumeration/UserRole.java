@@ -12,7 +12,8 @@ public enum UserRole {
 	
 	
 	ELECTORATE (0, "Electorate", "User allowed to vote for elections"), 
-	AUTHORITY (1, "Election Authority", "User allowed to manage elections")
+	AUTHORITY (1, "Election Authority", "User allowed to manage elections"),
+	INVITED(2, "Invited User", "User is invited to register in the system")
 	;
 
  
