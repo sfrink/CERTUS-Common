@@ -8,7 +8,7 @@ import java.util.Map;
  * @author : Hirosh Wickramasuriya
  */
 
-public enum UserRole {
+public enum UserType {
 	
 	
 	ELECTORATE (0, "Electorate", "User allowed to vote for elections"), 
@@ -24,15 +24,15 @@ public enum UserRole {
     /**
      * A mapping between the integer code and its corresponding Status to facilitate lookup by code.
      */
-    private static Map<Integer, UserRole> codeToStatusMapping;
+    private static Map<Integer, UserType> codeToStatusMapping;
  
-    private UserRole(int code, String label, String description) {
+    private UserType(int code, String label, String description) {
         this.code = code;
         this.label = label;
         this.description = description;
     }
     
-    public static UserRole getStatus(int i) {
+    public static UserType getStatus(int i) {
         if (codeToStatusMapping == null) {
             initMapping();
         }
@@ -40,8 +40,8 @@ public enum UserRole {
     }
  
     private static void initMapping() {
-        codeToStatusMapping = new HashMap<Integer, UserRole>();
-        for (UserRole s : values()) {
+        codeToStatusMapping = new HashMap<Integer, UserType>();
+        for (UserType s : values()) {
             codeToStatusMapping.put(s.code, s);
         }
     }

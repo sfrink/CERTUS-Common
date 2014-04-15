@@ -44,6 +44,7 @@ public class ElectionDto implements Serializable{
 	private String currentEmailList = "";
 	private boolean emailListError = false;
 	private String emailListMessage = "";
+	private String emailListInvited = "";
 	
 	private String password;
 	private boolean passwordError = false;
@@ -157,6 +158,12 @@ public class ElectionDto implements Serializable{
 	public void setEmailListMessage(String emailListMessage) {
 		this.emailListMessage = emailListMessage;
 	}
+	public String getEmailListInvited() {
+		return emailListInvited;
+	}
+	public void setEmailListInvited(String emailListInvited) {
+		this.emailListInvited = emailListInvited;
+	}
 	public String getPassword() {
 		return password;
 	}
@@ -239,6 +246,17 @@ public class ElectionDto implements Serializable{
 					}
 				}
 			}
+			
+			if ((this.getEmailListInvited() != null) && (!this.getEmailListInvited().trim().isEmpty() ) ){
+				String[] inviteEmails = this.getEmailListInvited().split(newLine);
+				for (String inviteEmail : inviteEmails) {
+					if (!inviteEmail.trim().isEmpty()) {
+						Validator vEmail = iv.validateEmail(inviteEmail.trim(), "Email address [" + inviteEmail.trim() + "] ");
+						valid &= vEmail.isVerified();
+						status += vEmail.getStatus();
+					}
+				}
+			}
 		}
 		
 		if (this.getCandidateList() != null) {
@@ -282,6 +300,7 @@ public class ElectionDto implements Serializable{
 		out += "Email Error Message: " + this.getEmailListMessage() + delimiter;
 		out += "Registered Voters Emails String : " + this.getRegisteredEmailList() + delimiter;
 		out += "Unregistered Voters Emails String : " + this.getUnregisteredEmailList() + delimiter;
+		out += "Invited Voters Emails String : " + this.getEmailListInvited() + delimiter;
 		out += "Current Voters Emails String : " + this.getCurrentEmailList() + delimiter;
 		out += "Password Error  : " + this.isPasswordError() + delimiter;
 		out += "Password Error Message : " + this.getPasswordErrorMessage() + delimiter;

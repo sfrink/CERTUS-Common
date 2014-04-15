@@ -21,7 +21,7 @@ public class UserDto implements Serializable {
 	private String activationCode;
 	private String publicKey;
 	private byte[] publicKeyBytes;
-	private int administratorFlag;
+	private int type;
 	private int status;
 	private String statusDescription;
 	private String sessionId;
@@ -93,11 +93,11 @@ public class UserDto implements Serializable {
 	public void setPublicKeyBytes(byte[] publicKeyBytes) {
 		this.publicKeyBytes = publicKeyBytes;
 	}
-	public int getAdministratorFlag() {
-		return administratorFlag;
+	public int getType() {
+		return type;
 	}
-	public void setAdministratorFlag(int administratorFlag) {
-		this.administratorFlag = administratorFlag;
+	public void setType(int type) {
+		this.type = type;
 	}
 	public int getStatus() {
 		return status;
@@ -164,7 +164,7 @@ public class UserDto implements Serializable {
 		} else {
 			out += "public key bytes\t:empty" + delimiter;
 		}
-		out += "admin_flag: " + this.getAdministratorFlag() + delimiter;
+		out += "admin_flag: " + this.getType() + delimiter;
 		out += "status: " + this.getStatus() + delimiter;
 		out += "session id: " + this.getSessionId() + delimiter;
 		
