@@ -31,6 +31,8 @@ public interface ServerInterface extends Remote {
     public Validator updateUser(UserDto userDto, String sessionID) throws RemoteException;
     public Validator updateUserPassword(UserDto userDto, String sessionID) throws RemoteException;
     public Validator uploadPubKey(byte[] keyBytes, String sessionID) throws RemoteException;
+    public Validator checkIfUsernameTempPasswordMatch(String email, String plainPass)
+    		throws RemoteException;
     
     // Elections
     public Validator selectElectionForVoter(int electionId, String sessionID) throws RemoteException;
@@ -53,4 +55,6 @@ public interface ServerInterface extends Remote {
     public Validator getTallierPublicKey(int electionId, String sessionID) throws RemoteException;
     public Validator voteProgressStatusForElection(int electionId, String sessionID) throws RemoteException;
     public Validator selectResults(int electionId, String sessionID) throws RemoteException;
+    
+    public Validator sendTempPassword(UserDto u, String sessionID) throws RemoteException;
 }
