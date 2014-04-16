@@ -21,7 +21,9 @@ public interface ServerInterface extends Remote {
     		throws RemoteException;
 
     // Users
-    public Validator registerNewUser (UserDto userDto) throws RemoteException;
+    public Validator addUser (UserDto userDto) throws RemoteException;
+    public Validator addUserWithPP (UserDto userDto) throws RemoteException;
+    public Validator addUserWithKey (UserDto userDto) throws RemoteException;
     public Validator selectUser(int userId, String sessionID) throws RemoteException;
     public Validator selectAllUsers(String sessionID) throws RemoteException ;
     public Validator editUser(UserDto userDto, String sessionID) throws RemoteException ;
