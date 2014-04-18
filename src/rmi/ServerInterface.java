@@ -33,11 +33,11 @@ public interface ServerInterface extends Remote {
     public Validator selectAllUsers(String sessionID) throws RemoteException ;
     public Validator editUser(UserDto userDto, String sessionID) throws RemoteException ;
     public Validator editUserStatus(int userId, UserStatus userStatus, String sessionID) throws RemoteException;
-    public Validator generateNewKeys(int userID, String newKeyPass, String sessionID) throws RemoteException;
+    public Validator generateNewKeys(int userID, String newKeyPass, String userPassword, String sessionID) throws RemoteException;
     public Validator logOut(String sessionID) throws RemoteException;
     public Validator updateUser(UserDto userDto, String sessionID) throws RemoteException;
     public Validator updateUserPassword(UserDto userDto, String sessionID) throws RemoteException;
-    public Validator uploadPubKey(byte[] keyBytes, String sessionID) throws RemoteException;
+    public Validator uploadPubKey(byte[] keyBytes, String userPassword, String sessionID) throws RemoteException;
     public Validator checkIfUsernameTempPasswordMatch(String email, String plainPass)
     		throws RemoteException;
     
