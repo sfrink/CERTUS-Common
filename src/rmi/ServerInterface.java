@@ -40,6 +40,7 @@ public interface ServerInterface extends Remote {
     public Validator uploadPubKey(byte[] keyBytes, String userPassword, String sessionID) throws RemoteException;
     public Validator checkIfUsernameTempPasswordMatch(String email, String plainPass)
     		throws RemoteException;
+    public Validator updateUserPasswordTemp(UserDto userDto, String sessionID) throws RemoteException;
     
     // Elections
     public Validator selectElectionForVoter(int electionId, String sessionID) throws RemoteException;
