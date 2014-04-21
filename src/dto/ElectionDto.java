@@ -203,7 +203,7 @@ public class ElectionDto implements Serializable{
 	
 	public Validator Validate()
 	{
-		boolean valid;
+		boolean valid = true;
 		String status = "";
 		Validator v = new Validator();
 
@@ -273,21 +273,25 @@ public class ElectionDto implements Serializable{
 			}
 		}
 		
-		// check whether there are redundant candidates
+		
+		// checks whether there are redundant candidates
 		if ((this.getCandidatesListString() != null) && (!this.getCandidatesListString().trim().isEmpty() ) ){
-			String[] candidates = this.getCandidatesListString().split(newLine);
-			for (String candidate : candidates) {
-				if (!candidate.trim().isEmpty()) {
-					int firstFound = this.getCandidatesListString().indexOf(candidate);
-					if (this.getCandidatesListString().indexOf(candidate, firstFound + 1) > 0) {
-						// identical candidates founds
-						
+			
+			String[] candidates = this.getCandidatesListString().trim().split(newLine);
+			for (int i = 0; i < candidates.length; i++) {
+				
+				for (int j = i+1; j < candidates.length; j++) {
+					if (candidates[j] == candidates[i]) {
 						this.setCandidateListError(true);
 						this.setCandidateListMessage("Redundent candidate names detected");
 						valid &= false;
 						status += "Redundent candidate names detected";
+						
 						break;
 					}
+				}
+				if (this.isCandidateListError()) {
+					break;
 				}
 			}
 		}
@@ -303,7 +307,7 @@ public class ElectionDto implements Serializable{
 		
 		v.setVerified(v.isVerified() && valid);
 		v.setStatus(v.getStatus() + status);
-
+		
 		return v;
 	}
 	
