@@ -3,6 +3,7 @@ package dto;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import enumeration.ElectionStatus;
 import enumeration.ElectionType;
@@ -277,23 +278,20 @@ public class ElectionDto implements Serializable{
 		
 		// checks whether there are redundant candidates
 		if ((this.getCandidatesListString() != null) && (!this.getCandidatesListString().trim().isEmpty() ) ){
-			
+			HashMap<String, String> map = new HashMap<String, String>();
 			String[] candidates = this.getCandidatesListString().trim().split(newLine);
-			for (int i = 0; i < candidates.length; i++) {
-				
-				for (int j = i+1; j < candidates.length; j++) {
-					if (candidates[j] == candidates[i]) {
-						this.setCandidateListError(true);
-						this.setCandidateListErrorMessage("Redundent candidate names detected");
-						valid &= false;
-						status += "Redundent candidate names detected";
-						
-						break;
-					}
-				}
-				if (this.isCandidateListError()) {
-					break;
-				}
+			for (String candidate : candidates) {
+				if (map.containsKey(candidate)) {
+	                this.setCandidateListError(true);
+	                this.setCandidateListErrorMessage("Duplicate candidates names detected");
+					valid &= false;
+					status += "Duplicate candidates names detected";
+	                break;
+	            }
+	            else
+	            {
+	                map.put(candidate, candidate);
+	            }
 			}
 		}
 		
