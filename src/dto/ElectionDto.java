@@ -36,6 +36,8 @@ public class ElectionDto implements Serializable{
 	private String closeDatetime;
 	private ArrayList<CandidateDto> candidateList;
 	private String candidatesListString;
+	private boolean candidateListError = false;
+	private String candidateListMessage = "";
 	private int electionType;
 
 	private String emailList = "";
@@ -115,6 +117,18 @@ public class ElectionDto implements Serializable{
 	}
 	public void setCandidatesListString(String candidateListString) {
 		this.candidatesListString = candidateListString;
+	}
+	public boolean isCandidateListError() {
+		return candidateListError;
+	}
+	public void setCandidateListError(boolean candidateListError) {
+		this.candidateListError = candidateListError;
+	}
+	public String getCandidateListMessage() {
+		return candidateListMessage;
+	}
+	public void setCandidateListMessage(String candidateListMessage) {
+		this.candidateListMessage = candidateListMessage;
 	}
 	public int getElectionType() {
 		return electionType;
@@ -258,6 +272,26 @@ public class ElectionDto implements Serializable{
 				}
 			}
 		}
+		
+		// check whether there are redundant candidates
+		if ((this.getCandidatesListString() != null) && (!this.getCandidatesListString().trim().isEmpty() ) ){
+			String[] candidates = this.getCandidatesListString().split(newLine);
+			for (String candidate : candidates) {
+				if (!candidate.trim().isEmpty()) {
+					int firstFound = this.getCandidatesListString().indexOf(candidate);
+					if (this.getCandidatesListString().indexOf(candidate, firstFound + 1) > 0) {
+						// identical candidates founds
+						
+						this.setCandidateListError(true);
+						this.setCandidateListMessage("Redundent candidate names detected");
+						valid &= false;
+						status += "Redundent candidate names detected";
+						break;
+					}
+				}
+			}
+		}
+		
 		
 		if (this.getCandidateList() != null) {
 			for (CandidateDto candidate : this.getCandidateList() ) {
