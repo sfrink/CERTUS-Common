@@ -34,10 +34,11 @@ public class ElectionDto implements Serializable{
 	private String statusDescription;
 	private String startDatetime;
 	private String closeDatetime;
+
 	private ArrayList<CandidateDto> candidateList;
 	private String candidatesListString;
 	private boolean candidateListError = false;
-	private String candidateListMessage = "";
+	private String candidateListErrorMessage = "";
 	private int electionType;
 
 	private String emailList = "";
@@ -124,11 +125,11 @@ public class ElectionDto implements Serializable{
 	public void setCandidateListError(boolean candidateListError) {
 		this.candidateListError = candidateListError;
 	}
-	public String getCandidateListMessage() {
-		return candidateListMessage;
+	public String getCandidateListErrorMessage() {
+		return candidateListErrorMessage;
 	}
-	public void setCandidateListMessage(String candidateListMessage) {
-		this.candidateListMessage = candidateListMessage;
+	public void setCandidateListErrorMessage(String candidateListMessage) {
+		this.candidateListErrorMessage = candidateListMessage;
 	}
 	public int getElectionType() {
 		return electionType;
@@ -283,7 +284,7 @@ public class ElectionDto implements Serializable{
 				for (int j = i+1; j < candidates.length; j++) {
 					if (candidates[j] == candidates[i]) {
 						this.setCandidateListError(true);
-						this.setCandidateListMessage("Redundent candidate names detected");
+						this.setCandidateListErrorMessage("Redundent candidate names detected");
 						valid &= false;
 						status += "Redundent candidate names detected";
 						
