@@ -15,7 +15,6 @@ import enumeration.ElectionStatus;
 import enumeration.UserStatus;
 
 public interface ServerInterface extends Remote {
-    public String sayHello(String name) throws RemoteException;   
     
     public Validator checkIfUsernamePasswordMatch(String email, String plainPass)
     		throws RemoteException;
