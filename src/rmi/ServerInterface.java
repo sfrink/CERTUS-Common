@@ -25,9 +25,9 @@ public interface ServerInterface extends Remote {
     public Validator addUserWithPP (UserDto userDto) throws RemoteException;
     public Validator addUserWithKey (UserDto userDto) throws RemoteException;
     
-    public Validator updateTempUser (UserDto userDto, String tempPassword, String sessionID) throws RemoteException;
-    public Validator UpdateTempUserWithPP (UserDto userDto, String tempPassword, String sessionID) throws RemoteException;
-    public Validator UpdateTempUserWithKey (UserDto userDto, String tempPassword, String sessionID) throws RemoteException;
+    public Validator updateTempUser (UserDto userDto, String sessionID) throws RemoteException;
+    public Validator UpdateTempUserWithPP (UserDto userDto, String sessionID) throws RemoteException;
+    public Validator UpdateTempUserWithKey (UserDto userDto, String sessionID) throws RemoteException;
     
     public Validator selectUser(int userId, String sessionID) throws RemoteException;
     public Validator selectAllUsers(String sessionID) throws RemoteException ;
