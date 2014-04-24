@@ -281,17 +281,22 @@ public class ElectionDto implements Serializable{
 			HashMap<String, String> map = new HashMap<String, String>();
 			String[] candidates = this.getCandidatesListString().trim().split(newLine);
 			for (String candidate : candidates) {
-				if (map.containsKey(candidate)) {
-	                this.setCandidateListError(true);
-	                this.setCandidateListErrorMessage("Duplicate candidates names detected");
-					valid &= false;
-					status += "Duplicate candidates names detected";
-	                break;
-	            }
-	            else
-	            {
-	                map.put(candidate, candidate);
-	            }
+				candidate = candidate.trim();
+				if (candidate.isEmpty()){
+					continue;
+				} else {
+					if (map.containsKey(candidate)) {
+		                this.setCandidateListError(true);
+		                this.setCandidateListErrorMessage("Duplicate candidates names detected");
+						valid &= false;
+						status += "Duplicate candidates names detected";
+		                break;
+		            }
+		            else
+		            {
+		                map.put(candidate, candidate);
+		            }
+				}
 			}
 		}
 		
