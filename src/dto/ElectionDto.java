@@ -248,6 +248,10 @@ public class ElectionDto implements Serializable{
 						Validator vEmail = iv.validateEmail(voterEmail.trim(), "Email address [" + voterEmail.trim() + "] ");
 						valid &= vEmail.isVerified();
 						status += vEmail.getStatus();
+						if (!vEmail.isVerified()) {
+							this.setEmailListError(true);
+							this.setEmailListMessage(this.getEmailListMessage() + newLine +  vEmail.getStatus());
+						}
 					}
 				}
 			}
