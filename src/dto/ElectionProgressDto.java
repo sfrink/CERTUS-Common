@@ -17,6 +17,7 @@ public class ElectionProgressDto implements Serializable
 	private int validVotes;
 	private int rejectedVotes;
 	private int totalVotes;
+	private int totalEligible;
 	
 	public int getElectionId() {
 		return electionId;
@@ -43,6 +44,12 @@ public class ElectionProgressDto implements Serializable
 	public void setTotalVotes(int totalVotes) {
 		this.totalVotes = totalVotes;
 	}
+	public int getTotalEligible() {
+		return totalEligible;
+	}
+	public void setTotalEligible(int totalEligible) {
+		this.totalEligible = totalEligible;
+	}
 	public void addValidVotes(int count){
 		this.validVotes += count;
 	}
@@ -60,6 +67,7 @@ public class ElectionProgressDto implements Serializable
 		out += "valid votes\t: " + this.getValidVotes() + delimiter;
 		out += "rejected votes\t: " + this.getRejectedVotes() + delimiter;
 		out += "total votes\t: " + this.getTotalVotes() + delimiter;
+		out += "total qulified\t: " + this.getTotalEligible() + delimiter;
 		
 		out += endOfString;
 
