@@ -47,8 +47,8 @@ public class ElectionProgressDto implements Serializable
 	public int getTotalEligible() {
 		return totalEligible;
 	}
-	public void setTotalEligible(int totalEligible) {
-		this.totalEligible = totalEligible;
+	public void setTotalEligible(int totalQualified) {
+		this.totalEligible = totalQualified;
 	}
 	public void addValidVotes(int count){
 		this.validVotes += count;
